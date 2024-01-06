@@ -1,29 +1,32 @@
 /**
- * Checks if a password meets the specified criteria.
+ * Checks if a password meets certain criteria.
  * @param {string} password - The password to be checked.
- * @throws {Error} If the password does not meet the criteria.
+ * @throws {Error} If the password is not a string, is less than 8 characters,
+ *   is more than 20 characters, does not contain a lowercase letter,
+ *   does not contain an uppercase letter, does not contain a number,
+ *   or does not contain a special character.
  */
 export function checkPassword(password) {
   if (typeof password !== "string") {
-    throw new Error("password must be a string");
+    throw new Error("Password must be a string");
   }
   if (password.length < 8) {
-    throw new Error("password must be at least 8 characters");
+    throw new Error("Password must be at least 8 characters");
   }
   if (password.length > 20) {
-    throw new Error("password must be less than 20 characters");
+    throw new Error("Password must be less than 20 characters");
   }
   if (!password.match(/[a-z]/)) {
-    throw new Error("password must contain a lowercase letter");
+    throw new Error("Password must contain a lowercase letter");
   }
   if (!password.match(/[A-Z]/)) {
-    throw new Error("password must contain an uppercase letter");
+    throw new Error("Password must contain an uppercase letter");
   }
   if (!password.match(/[0-9]/)) {
-    throw new Error("password must contain a number");
+    throw new Error("Password must contain a number");
   }
-  if (!password.match(/[^a-zA-Z0-9!]/)) {
-    throw new Error("password must contain a special character");
+  if (!password.match(/[^a-zA-Z0-9]/)) {
+    throw new Error("Password must contain a special character");
   }
 }
 
@@ -36,13 +39,13 @@ export function checkPassword(password) {
  */
 export function checkPasswordWithoutRegEx(password) {
   if (typeof password !== "string") {
-    throw new Error("password must be a string");
+    throw new Error("Password must be a string");
   }
   if (password.length < 8) {
-    throw new Error("password must be at least 8 characters");
+    throw new Error("Password must be at least 8 characters");
   }
   if (password.length > 20) {
-    throw new Error("password must be less than 20 characters");
+    throw new Error("Password must be less than 20 characters");
   }
   let hasLowercase = false;
   let hasUppercase = false;
@@ -64,15 +67,15 @@ export function checkPasswordWithoutRegEx(password) {
   }
 
   if (!hasLowercase) {
-    throw new Error("password must contain a lowercase letter");
+    throw new Error("Password must contain a lowercase letter");
   }
   if (!hasUppercase) {
-    throw new Error("password must contain an uppercase letter");
+    throw new Error("Password must contain an uppercase letter");
   }
   if (!hasNumber) {
-    throw new Error("password must contain a number");
+    throw new Error("Password must contain a number");
   }
   if (!hasSpecialChar) {
-    throw new Error("password must contain a special character");
+    throw new Error("Password must contain a special character");
   }
 }
