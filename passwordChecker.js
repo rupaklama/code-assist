@@ -6,7 +6,7 @@
  *   does not contain an uppercase letter, does not contain a number,
  *   or does not contain a special character.
  */
-export function checkPassword(password) {
+function checkPassword(password) {
   if (typeof password !== "string") {
     throw new Error("Password must be a string");
   }
@@ -25,7 +25,7 @@ export function checkPassword(password) {
   if (!password.match(/[0-9]/)) {
     throw new Error("Password must contain a number");
   }
-  if (!password.match(/[^a-zA-Z0-9]/)) {
+  if (!password.match(/[^a-zA-Z0-9!]/)) {
     throw new Error("Password must contain a special character");
   }
 }
@@ -37,7 +37,7 @@ export function checkPassword(password) {
  * @throws {Error} If the password is not a string, is less than 8 characters, is more than 20 characters,
  *                 does not contain a lowercase letter, an uppercase letter, a number, or a special character.
  */
-export function checkPasswordWithoutRegEx(password) {
+function checkPasswordWithoutRegEx(password) {
   if (typeof password !== "string") {
     throw new Error("Password must be a string");
   }
@@ -79,3 +79,5 @@ export function checkPasswordWithoutRegEx(password) {
     throw new Error("Password must contain a special character");
   }
 }
+
+module.exports = { checkPassword, checkPasswordWithoutRegEx };
